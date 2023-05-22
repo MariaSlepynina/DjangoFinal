@@ -1,0 +1,12 @@
+<div>
+    {% if request.user.is_authenticated %}
+        Вы вошли под именем: <strong>{{ request.user.username }}</strong>
+        <form action="{% url 'logout_user' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Выход</button>
+        </form>
+    {% else %}
+        <button type="button" onclick="location.href='{% url 'register_user' %}'">Зарегистрироваться</button>
+        <button type="button" onclick="location.href='{% url 'login_user' %}'">Войти</button>
+    {% endif %}
+</div>

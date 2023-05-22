@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+<h1>List for one tarif: {{ tarif.name }} </h1>
+{% endblock %}
+{% block page_content%}
+<table>
+    {% for p in tarif.people.all %}
+    <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.sity }}</td>
+    </tr>
+        {% endfor %}
+
+</table>
+<a href="#" > Change </a>
+{% endblock %}

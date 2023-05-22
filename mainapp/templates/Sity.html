@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+<h1>Sity List   </h1>
+{% endblock %}
+{% block page_content%}
+<table>
+    {% for b in Sity %}
+    <tr>
+        <td> <a href="#"> {{b.name}} </a> </td>
+
+
+        <td><a href="#" > Change </a> </td>
+        <td><a href="#" > Delete </a> </td>
+    </tr>
+        {% endfor %}
+
+</table>
+<a href="#" > Add</a>
+{% endblock %}
