@@ -20,4 +20,4 @@ class OperatorForm(ModelForm):
 class SityForm(ModelForm):
     class Meta:
         model = models.Sity
-        fields = ['name', 
+        fields = ['name']
