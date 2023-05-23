@@ -111,7 +111,67 @@ def Operator(request):
         'title': 'Operators',
     }
     return render(request, 'Operator.html', context)
+    
+    
+def Sity(request):
+    songs = Sity.objects.all()
+    context = {
+        'Sity': Sity.objects.all(),
+        'title': 'Sity',
+    }
+    return render(request, 'Sity.html', context)
 
+def Sity_new(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = SityForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse('Tarif'))
+        else:
+            form = SityForm()
+        template = loader.get_template('Sity_form.html')
+        context = {
+            'form': form,
+            'title': 'new sity'
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseForbidden
+
+def Sity_edit(request, kp):
+    if request.user.is_authenticated:
+        try:
+            Sitys = Sity.objects.get(id=kp)
+        except Tarif.DoesNotExist:
+            raise Http404("error")
+        if request.method == 'POST':
+            form = SityForm(request.POST, instance=tarifs)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse('Sity'))
+        else:
+            form = SityForm(instance=sitys)
+        template = loader.get_template('Sity_form.html')
+        context = {
+            'form': form,
+            'title': 'edit Sitys'
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        return  HttpResponseForbidden
+
+def Sity_delete(request, kp):
+    if request.user.is_authenticated:
+        try:
+            sitys = Sity.objects.get(id=kp)
+        except Sity.DoesNotExist:
+            raise Http404("error")
+        m = f"Sity{sitys.name} was deleted"
+        sitys.delete()
+        return HttpResponseRedirect(reverse('Sity'))
+    else:
+        return HttpResponseForbidden
 
 
 def Tarif_new(request):
