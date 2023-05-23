@@ -16,3 +16,8 @@ class OperatorForm(ModelForm):
     class Meta:
         model = models.Operator
         fields = ['name', 'tarif', 'client']
+        
+class SityForm(ModelForm):
+    class Meta:
+        model = models.Sity
+        fields = ['name', 
