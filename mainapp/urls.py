@@ -14,6 +14,7 @@ urlpatterns = [
     path("Tarif/new/", views.Tarif_new, name="Tarif_new"),
     path("Tarif/<int:kp>/edit/", views.Tarif_edit, name="Tarif_edit"),
     path("Tarif/<int:kp>/delete/", views.Tarif_delete, name="Tarif_delete"),
+    path("Sity/", views.sity, name="sity"),
     path('Operator/new/', views.Operator_new, name='Operator_new'),
     path('Operator/edit/<int:kp>/', views.Operator_edit, name='Operator_edit'),
     path('Operator/delete/<int:kp>/', views.Operator_delete, name='Operator_delete'),
